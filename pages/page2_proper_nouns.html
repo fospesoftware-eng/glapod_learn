@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2: Proper Nouns & Calendar Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { var-primary: #8B5CF6; }
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+        body { font-family: 'Quicksand', sans-serif; background: linear-gradient(135deg, #FAF5FF, #F3E8FF, #E0F2FE); color: #1E293B; padding: 20px; min-height: 100vh; }
+        .top-nav { max-width: 1000px; margin: 0 auto 20px auto; background: white; padding: 15px 25px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .btn-nav { text-decoration: none; font-family: 'Fredoka', sans-serif; background: #F3E8FF; color: #8B5CF6; padding: 8px 18px; border-radius: 30px; font-weight: 600; border: 2px solid #DDD6FE; transition: 0.2s; }
+        .btn-nav:hover { background: #8B5CF6; color: white; }
+        .hero { max-width: 1000px; margin: 0 auto 25px auto; background: linear-gradient(135deg, #8B5CF6, #6D28D9); color: white; padding: 30px; border-radius: 25px; box-shadow: 0 15px 30px rgba(139,92,246,0.3); }
+        .hero h1 { font-family: 'Fredoka', sans-serif; font-size: 2.2rem; margin-bottom: 8px; }
+        .container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .card { background: white; border-radius: 25px; padding: 28px; box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
+        .card h2 { font-family: 'Fredoka', sans-serif; color: #5B21B6; margin-bottom: 15px; }
+        .rule-box { background: #FEF3C7; border: 2px solid #FDE68A; color: #92400E; padding: 15px; border-radius: 16px; font-weight: 700; margin-bottom: 20px; }
+        .calendar-img { width: 100%; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        .name-tag { display: inline-block; background: #F3E8FF; border: 2px solid #DDD6FE; color: #5B21B6; padding: 10px 18px; border-radius: 50px; font-family: 'Fredoka', sans-serif; font-size: 1.1rem; margin: 6px; cursor: pointer; transition: 0.2s; }
+        .name-tag:hover { transform: scale(1.1); background: #8B5CF6; color: white; }
+        footer { text-align: center; margin-top: 30px; color: #64748B; font-weight: 600; }
+        @media(max-width: 768px) { .container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="page1_common_nouns.html" class="btn-nav">⬅️ Page 1</a>
+        <div style="font-family:'Fredoka',sans-serif; font-size:1.3rem; font-weight:700; color:#5B21B6;">Page 2: Proper Nouns</div>
+        <a href="page3_famous_places.html" class="btn-nav">Next: Page 3 ➔</a>
+    </div>
+
+    <div class="hero">
+        <h1>Proper Nouns & Capital Letter Rule!</h1>
+        <p>Proper nouns are special names for particular people, places, days, and months. They ALWAYS begin with a <strong>CAPITAL letter</strong>!</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>📅 Days & Months Calendar</h2>
+            <div class="rule-box">
+                📌 Days of the week and months of the year are Proper Nouns!
+            </div>
+            <img src="file:///Users/asterantony/.gemini/antigravity/brain/a6de559f-5ff1-4ea7-a7b0-809bbefa6701/calendar_august_art_1785944931069.jpg" alt="August Calendar" class="calendar-img">
+            <div style="line-height:2;">
+                <strong>Days:</strong> <span class="name-tag" onclick="speak('Monday')">Monday</span> <span class="name-tag" onclick="speak('Tuesday')">Tuesday</span> <span class="name-tag" onclick="speak('Wednesday')">Wednesday</span><br>
+                <strong>Months:</strong> <span class="name-tag" onclick="speak('January')">January</span> <span class="name-tag" onclick="speak('August')">August</span> <span class="name-tag" onclick="speak('December')">December</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>👑 People's Names are Proper Nouns!</h2>
+            <div class="rule-box">
+                💡 Click a name to hear how it's spoken:
+            </div>
+            <div class="name-tag" onclick="speak('Robin Hood')">🏹 Robin Hood</div>
+            <div class="name-tag" onclick="speak('Aladdin')">🧞 Aladdin</div>
+            <div class="name-tag" onclick="speak('Harry Potter')">⚡ Harry Potter</div>
+            <div class="name-tag" onclick="speak('Santa Claus')">🎅 Santa Claus</div>
+            <div class="name-tag" onclick="speak('Florence Nightingale')">🩺 Florence Nightingale</div>
+            <div class="name-tag" onclick="speak('Mahatma Gandhi')">🕊️ Mahatma Gandhi</div>
+            <div class="name-tag" onclick="speak('David Beckham')">⚽ David Beckham</div>
+            <div class="name-tag" onclick="speak('Uncle David')">👨 Uncle David</div>
+        </div>
+    </div>
+
+    <footer>🎉 Interactive Learning Playbook • Page 2</footer>
+
+    <script>
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const u = new SpeechSynthesisUtterance(text);
+                u.rate = 0.9;
+                window.speechSynthesis.speak(u);
+            }
+        }
+    </script>
+</body>
+</html>

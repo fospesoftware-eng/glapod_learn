@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 5: Plural Rules & Zoo Story Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+        body { font-family: 'Quicksand', sans-serif; background: linear-gradient(135deg, #FEF3C7, #FFFBEB, #E0F2FE); color: #1E293B; padding: 20px; min-height: 100vh; }
+        .top-nav { max-width: 1000px; margin: 0 auto 20px auto; background: white; padding: 15px 25px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .btn-nav { text-decoration: none; font-family: 'Fredoka', sans-serif; background: #FEF3C7; color: #D97706; padding: 8px 18px; border-radius: 30px; font-weight: 600; border: 2px solid #FDE68A; transition: 0.2s; }
+        .btn-nav:hover { background: #D97706; color: white; }
+        .hero { max-width: 1000px; margin: 0 auto 25px auto; background: linear-gradient(135deg, #F59E0B, #D97706); color: white; padding: 30px; border-radius: 25px; box-shadow: 0 15px 30px rgba(245,158,11,0.3); }
+        .hero h1 { font-family: 'Fredoka', sans-serif; font-size: 2.2rem; margin-bottom: 8px; }
+        .container { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 25px; }
+        .card { background: white; border-radius: 25px; padding: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
+        .card h2 { font-family: 'Fredoka', sans-serif; color: #B45309; margin-bottom: 15px; }
+        .story-text { background: #FFFBEB; border: 3px solid #FDE68A; border-radius: 22px; padding: 28px; font-size: 1.3rem; line-height: 2.4; }
+        .input-inline { font-family: 'Fredoka', sans-serif; font-size: 1.15rem; font-weight: 600; color: #B45309; border: 2px solid #CBD5E1; border-radius: 12px; padding: 4px 12px; width: 130px; text-align: center; background: white; }
+        .input-inline:focus { border-color: #F59E0B; outline: none; background: #FEF3C7; }
+        .btn-action { font-family: 'Fredoka', sans-serif; background: #10B981; color: white; border: none; padding: 12px 28px; border-radius: 50px; font-size: 1.1rem; cursor: pointer; transition: 0.2s; margin-top: 20px; }
+        .btn-action:hover { transform: scale(1.05); background: #059669; }
+        .feedback { margin-top: 15px; font-weight: 700; font-size: 1.15rem; display: none; }
+        footer { text-align: center; margin-top: 30px; color: #64748B; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="page4_singular_plural.html" class="btn-nav">⬅️ Page 4</a>
+        <div style="font-family:'Fredoka',sans-serif; font-size:1.3rem; font-weight:700; color:#B45309;">Page 5: Zoo Story Plural Builder</div>
+        <a href="page6_masculine_feminine.html" class="btn-nav">Next: Page 6 ➔</a>
+    </div>
+
+    <div class="hero">
+        <h1>🦁 The Great Zoo Adventure: Plural Nouns Story!</h1>
+        <p>Type the correct plural form of the words in parentheses to complete the story!</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>📜 Exercise 6: Complete the Plural Nouns Story</h2>
+            
+            <div class="story-text">
+                Three <strong>ladies</strong> (lady) in pink 
+                <input type="text" class="input-inline" id="q1" placeholder="(dress)" data-ans="dresses"> (dress) took their 
+                <input type="text" class="input-inline" id="q2" placeholder="(baby)" data-ans="babies"> (baby) for a walk in the zoo.
+                They saw four <input type="text" class="input-inline" id="q3" placeholder="(giraffe)" data-ans="giraffes"> (giraffe), 
+                three <input type="text" class="input-inline" id="q4" placeholder="(hippo)" data-ans="hippos"> (hippo), and 
+                two <input type="text" class="input-inline" id="q5" placeholder="(kangaroo)" data-ans="kangaroos"> (kangaroo).
+                They walked for so long that their <input type="text" class="input-inline" id="q6" placeholder="(foot)" data-ans="feet"> (foot) became sore!
+                They sat down on a bench near some <input type="text" class="input-inline" id="q7" placeholder="(monkey)" data-ans="monkeys"> (monkey).
+                The monkeys were playing with cardboard <input type="text" class="input-inline" id="q8" placeholder="(box)" data-ans="boxes"> (box) and throwing 
+                <input type="text" class="input-inline" id="q9" placeholder="(stick)" data-ans="sticks"> (stick) at each other!
+                After a while, the ladies looked at their <input type="text" class="input-inline" id="q10" placeholder="(watch)" data-ans="watches"> (watch) and decided it was time to go home.
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <button class="btn-action" onclick="checkStory()">✨ Check My Plural Answers</button>
+                <button class="btn-action" style="background:#F1F5F9; color:#475569;" onclick="resetStory()">🔄 Reset</button>
+            </div>
+
+            <div class="feedback" id="feedback"></div>
+        </div>
+    </div>
+
+    <footer>🎉 Interactive Learning Playbook • Page 5</footer>
+
+    <script>
+        function checkStory() {
+            let correct = 0;
+            const total = 10;
+            for (let i = 1; i <= total; i++) {
+                const el = document.getElementById('q' + i);
+                const val = el.value.trim().toLowerCase();
+                const expected = el.dataset.ans.toLowerCase();
+                if (val === expected) {
+                    correct++;
+                    el.style.borderColor = '#10B981';
+                    el.style.background = '#DCFCE7';
+                } else {
+                    el.style.borderColor = '#EF4444';
+                    el.style.background = '#FEE2E2';
+                }
+            }
+            const fb = document.getElementById('feedback');
+            fb.style.display = 'block';
+            if (correct === total) {
+                fb.style.color = '#059669';
+                fb.textContent = `🎉 Woohoo! You completed the entire Zoo Story perfectly! (${correct}/${total})`;
+            } else {
+                fb.style.color = '#D97706';
+                fb.textContent = `⭐ You got ${correct} of ${total} correct! Check the red boxes and try again!`;
+            }
+        }
+
+        function resetStory() {
+            for (let i = 1; i <= 10; i++) {
+                const el = document.getElementById('q' + i);
+                el.value = '';
+                el.style.borderColor = '#CBD5E1';
+                el.style.background = 'white';
+            }
+            document.getElementById('feedback').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1: Common Nouns Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --bg: linear-gradient(135deg, #E0F2FE, #F0FDFA, #FAF5FF);
+            --card: rgba(255, 255, 255, 0.95);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+        body { font-family: 'Quicksand', sans-serif; background: var(--bg); color: #1E293B; min-height: 100vh; padding: 20px; }
+        .top-nav { max-width: 1000px; margin: 0 auto 20px auto; background: var(--card); padding: 15px 25px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .btn-nav { text-decoration: none; font-family: 'Fredoka', sans-serif; background: #EEF2FF; color: var(--primary); padding: 8px 18px; border-radius: 30px; font-weight: 600; border: 2px solid #C7D2FE; transition: 0.2s; }
+        .btn-nav:hover { background: var(--primary); color: white; }
+        .header-hero { max-width: 1000px; margin: 0 auto 25px auto; background: linear-gradient(135deg, #06B6D4, #3B82F6); color: white; padding: 30px; border-radius: 25px; box-shadow: 0 15px 30px rgba(6,182,212,0.3); }
+        .header-hero h1 { font-family: 'Fredoka', sans-serif; font-size: 2.2rem; margin-bottom: 8px; }
+        .card-container { max-width: 1000px; margin: 0 auto; background: var(--card); border-radius: 25px; padding: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
+        .grid-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+        .cat-box { background: white; border: 3px dashed #CBD5E1; border-radius: 20px; padding: 20px; text-align: center; }
+        .cat-box h3 { font-family: 'Fredoka', sans-serif; font-size: 1.3rem; margin-bottom: 12px; }
+        .word-tag { display: inline-block; background: #F1F5F9; color: #1E293B; font-weight: 700; padding: 8px 16px; border-radius: 12px; margin: 4px; font-size: 1.05rem; cursor: pointer; transition: 0.2s; border: 2px solid #E2E8F0; }
+        .word-tag:hover { transform: scale(1.08); border-color: var(--primary); background: #EEF2FF; }
+        .btn-speak { background: none; border: none; font-size: 1.1rem; cursor: pointer; margin-left: 5px; }
+        footer { text-align: center; margin-top: 30px; color: #64748B; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="../index.html" class="btn-nav">🏠 Main Hub</a>
+        <div style="font-family:'Fredoka',sans-serif; font-size:1.3rem; font-weight:700;">Page 1: Common Nouns</div>
+        <a href="page2_proper_nouns.html" class="btn-nav">Next: Page 2 ➔</a>
+    </div>
+
+    <div class="header-hero">
+        <h1>Words for People, Places, Animals & Things</h1>
+        <p>Words for people, places, animals, and things are called <strong>common nouns</strong>! Tap any word to listen to its sound.</p>
+    </div>
+
+    <div class="card-container">
+        <h2 style="font-family:'Fredoka',sans-serif; color:#334155; margin-bottom:15px;">Explore Common Noun Categories:</h2>
+        
+        <div class="grid-categories">
+            <div class="cat-box" style="border-color:#F59E0B; background:#FFFBEB;">
+                <h3 style="color:#D97706;">📦 Things</h3>
+                <div class="word-tag" onclick="speak('ruler')">📏 ruler <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('pencil')">✏️ pencil <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('bicycle')">🚲 bicycle <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('computer')">💻 computer <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('telephone')">📞 telephone <button class="btn-speak">🔊</button></div>
+            </div>
+
+            <div class="cat-box" style="border-color:#10B981; background:#F0FDF4;">
+                <h3 style="color:#15803D;">🦁 Animals & Young</h3>
+                <div class="word-tag" onclick="speak('dog and puppy')">🐶 dog → puppy <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('cat and kitten')">🐱 cat → kitten <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('lion and cub')">🦁 lion → cub <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('kangaroo and joey')">🦘 kangaroo → joey <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('frog and tadpole')">🐸 frog → tadpole <button class="btn-speak">🔊</button></div>
+            </div>
+
+            <div class="cat-box" style="border-color:#06B6D4; background:#E0F2FE;">
+                <h3 style="color:#0369A1;">🏛️ Places</h3>
+                <div class="word-tag" onclick="speak('school')">🏫 school <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('park')">🏞️ park <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('hospital')">🏥 hospital <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('zoo')">🦁 zoo <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('airport')">✈️ airport <button class="btn-speak">🔊</button></div>
+            </div>
+
+            <div class="cat-box" style="border-color:#EC4899; background:#FCE7F3;">
+                <h3 style="color:#BE185D;">👨‍⚕️ People</h3>
+                <div class="word-tag" onclick="speak('teacher')">👩‍🏫 teacher <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('doctor')">👨‍⚕️ doctor <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('artist')">🎨 artist <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('pilot')">👨‍✈️ pilot <button class="btn-speak">🔊</button></div>
+                <div class="word-tag" onclick="speak('magician')">🪄 magician <button class="btn-speak">🔊</button></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>🎉 Interactive Learning Playbook • Page 1</footer>
+
+    <script>
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const u = new SpeechSynthesisUtterance(text);
+                u.rate = 0.9;
+                window.speechSynthesis.speak(u);
+            }
+        }
+    </script>
+</body>
+</html>

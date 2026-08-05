@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 4: Singular vs Plural Nouns & Articles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+        body { font-family: 'Quicksand', sans-serif; background: linear-gradient(135deg, #DCFCE7, #F0FDF4, #E0F2FE); color: #1E293B; padding: 20px; min-height: 100vh; }
+        .top-nav { max-width: 1000px; margin: 0 auto 20px auto; background: white; padding: 15px 25px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .btn-nav { text-decoration: none; font-family: 'Fredoka', sans-serif; background: #DCFCE7; color: #15803D; padding: 8px 18px; border-radius: 30px; font-weight: 600; border: 2px solid #86EFAC; transition: 0.2s; }
+        .btn-nav:hover { background: #15803D; color: white; }
+        .hero { max-width: 1000px; margin: 0 auto 25px auto; background: linear-gradient(135deg, #10B981, #059669); color: white; padding: 30px; border-radius: 25px; box-shadow: 0 15px 30px rgba(16,185,129,0.3); }
+        .hero h1 { font-family: 'Fredoka', sans-serif; font-size: 2.2rem; margin-bottom: 8px; }
+        .container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .card { background: white; border-radius: 25px; padding: 28px; box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
+        .card h2 { font-family: 'Fredoka', sans-serif; color: #047857; margin-bottom: 15px; }
+        .rule-card { background: #ECFDF5; border: 2px solid #A7F3D0; padding: 15px; border-radius: 16px; font-weight: 700; color: #065F46; margin-bottom: 15px; }
+        .toggle-row { display: flex; align-items: center; justify-content: space-between; background: #F8FAFC; border: 2px solid #E2E8F0; padding: 14px 20px; border-radius: 16px; margin-bottom: 12px; font-size: 1.15rem; font-weight: 700; }
+        .btn-multiply { background: #10B981; color: white; border: none; font-family: 'Fredoka', sans-serif; padding: 6px 16px; border-radius: 30px; cursor: pointer; transition: 0.2s; }
+        .btn-multiply:hover { transform: scale(1.08); background: #059669; }
+        .article-box { display: inline-block; padding: 6px 14px; border-radius: 12px; font-family: 'Fredoka', sans-serif; margin: 4px; font-size: 1.1rem; cursor: pointer; border: 2px solid #CBD5E1; background: white; }
+        .article-box.correct-a { background: #FEF3C7; border-color: #F59E0B; color: #B45309; }
+        .article-box.correct-an { background: #E0F2FE; border-color: #0284C7; color: #0369A1; }
+        footer { text-align: center; margin-top: 30px; color: #64748B; font-weight: 600; }
+        @media(max-width: 768px) { .container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="page3_famous_places.html" class="btn-nav">⬅️ Page 3</a>
+        <div style="font-family:'Fredoka',sans-serif; font-size:1.3rem; font-weight:700; color:#047857;">Page 4: Singular vs Plural & Articles</div>
+        <a href="page5_plural_rules.html" class="btn-nav">Next: Page 5 ➔</a>
+    </div>
+
+    <div class="hero">
+        <h1>Singular (One) vs Plural (Two or More)!</h1>
+        <p>Use a singular noun for one person/thing. Add <strong>-s</strong> to make most nouns plural! Use <strong>a</strong> before consonants and <strong>an</strong> before vowels (a, e, i, o, u).</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>➕ Add "-s" Plural Transformer</h2>
+            <div class="rule-card">
+                💡 Click the green "+ s" button to see the singular turn into plural!
+            </div>
+            
+            <div class="toggle-row">
+                <span id="word1">a computer 💻</span>
+                <button class="btn-multiply" onclick="togglePlural('word1', 'a computer 💻', 'computers 💻💻')">+ s</button>
+            </div>
+            <div class="toggle-row">
+                <span id="word2">a chair 🪑</span>
+                <button class="btn-multiply" onclick="togglePlural('word2', 'a chair 🪑', 'chairs 🪑🪑')">+ s</button>
+            </div>
+            <div class="toggle-row">
+                <span id="word3">a train 🚂</span>
+                <button class="btn-multiply" onclick="togglePlural('word3', 'a train 🚂', 'trains 🚂🚂')">+ s</button>
+            </div>
+            <div class="toggle-row">
+                <span id="word4">a player ⚽</span>
+                <button class="btn-multiply" onclick="togglePlural('word4', 'a player ⚽', 'players ⚽⚽')">+ s</button>
+            </div>
+            <div class="toggle-row">
+                <span id="word5">a mountain ⛰️</span>
+                <button class="btn-multiply" onclick="togglePlural('word5', 'a mountain ⛰️', 'mountains ⛰️⛰️')">+ s</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🅰️ Articles Helper: "A" vs "AN"</h2>
+            <div class="rule-card">
+                📌 "an" is used before vowels (a, e, i, o, u). "a" is used before consonants!
+            </div>
+            
+            <h3 style="font-family:'Fredoka',sans-serif; margin-bottom:10px; color:#0369A1;">Use "AN" (Vowels):</h3>
+            <span class="article-box correct-an" onclick="speak('an artist')">🎨 an artist</span>
+            <span class="article-box correct-an" onclick="speak('an eye')">👁️ an eye</span>
+            <span class="article-box correct-an" onclick="speak('an insect')">🐝 an insect</span>
+            <span class="article-box correct-an" onclick="speak('an oven')">🍳 an oven</span>
+            <span class="article-box correct-an" onclick="speak('an umbrella')">☂️ an umbrella</span>
+
+            <h3 style="font-family:'Fredoka',sans-serif; margin:20px 0 10px 0; color:#D97706;">Use "A" (Consonants):</h3>
+            <span class="article-box correct-a" onclick="speak('a river')">🌊 a river</span>
+            <span class="article-box correct-a" onclick="speak('a castle')">🏰 a castle</span>
+            <span class="article-box correct-a" onclick="speak('a park')">🏞️ a park</span>
+            <span class="article-box correct-a" onclick="speak('a doctor')">👨‍⚕️ a doctor</span>
+        </div>
+    </div>
+
+    <footer>🎉 Interactive Learning Playbook • Page 4</footer>
+
+    <script>
+        function togglePlural(id, singular, plural) {
+            const el = document.getElementById(id);
+            if (el.textContent === singular) {
+                el.textContent = plural;
+                speak(plural);
+            } else {
+                el.textContent = singular;
+                speak(singular);
+            }
+        }
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const u = new SpeechSynthesisUtterance(text);
+                u.rate = 0.9;
+                window.speechSynthesis.speak(u);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 10: Action Verbs & Subject-Verb Agreement</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+        body { font-family: 'Quicksand', sans-serif; background: linear-gradient(135deg, #E0F2FE, #DCFCE7, #FCE7F3); color: #1E293B; padding: 20px; min-height: 100vh; }
+        .top-nav { max-width: 1000px; margin: 0 auto 20px auto; background: white; padding: 15px 25px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .btn-nav { text-decoration: none; font-family: 'Fredoka', sans-serif; background: #EEF2FF; color: #4F46E5; padding: 8px 18px; border-radius: 30px; font-weight: 600; border: 2px solid #C7D2FE; transition: 0.2s; }
+        .btn-nav:hover { background: #4F46E5; color: white; }
+        .hero { max-width: 1000px; margin: 0 auto 25px auto; background: linear-gradient(135deg, #3B82F6, #1D4ED8); color: white; padding: 30px; border-radius: 25px; box-shadow: 0 15px 30px rgba(59,130,246,0.3); }
+        .hero h1 { font-family: 'Fredoka', sans-serif; font-size: 2.2rem; margin-bottom: 8px; }
+        .container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .card { background: white; border-radius: 25px; padding: 28px; box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
+        .card h2 { font-family: 'Fredoka', sans-serif; color: #1E40AF; margin-bottom: 15px; }
+        .verb-pill { display: inline-block; padding: 10px 20px; border-radius: 16px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1.1rem; margin: 6px; border: 2px solid #BFDBFE; background: #EFF6FF; color: #1D4ED8; cursor: pointer; transition: 0.2s; }
+        .verb-pill:hover { transform: scale(1.1); background: #3B82F6; color: white; }
+        .sentence-row { background: #F8FAFC; border: 2px solid #E2E8F0; padding: 14px; border-radius: 16px; margin-bottom: 12px; font-size: 1.15rem; font-weight: 700; }
+        .select-inline { font-family: 'Fredoka', sans-serif; font-size: 1.05rem; font-weight: 700; color: #1D4ED8; padding: 4px 10px; border-radius: 10px; border: 2px solid #CBD5E1; background: white; margin: 0 6px; }
+        .btn-action { font-family: 'Fredoka', sans-serif; background: #10B981; color: white; border: none; padding: 12px 28px; border-radius: 50px; font-size: 1.1rem; cursor: pointer; transition: 0.2s; margin-top: 15px; }
+        .btn-action:hover { transform: scale(1.05); background: #059669; }
+        footer { text-align: center; margin-top: 30px; color: #64748B; font-weight: 600; }
+        @media(max-width:768px) { .container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="page9_adjectives.html" class="btn-nav">⬅️ Page 9</a>
+        <div style="font-family:'Fredoka',sans-serif; font-size:1.3rem; font-weight:700; color:#1E40AF;">Page 10: Action Verbs & Agreement</div>
+        <a href="../index.html" class="btn-nav">🏠 Main Hub</a>
+    </div>
+
+    <div class="hero">
+        <h1>🏃 Action Verbs & Subject-Verb Agreement!</h1>
+        <p>Verbs tell what people or things are doing! Singular subjects need verbs ending in <strong>-s</strong> (He drinks). Plural subjects do not (They drink)!</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>⚡ Action Verbs Playground</h2>
+            <p style="font-weight:600; color:#64748B; margin-bottom:15px;">Tap any verb to hear its sound:</p>
+            <div class="verb-pill" onclick="speak('drink')">🥤 drink</div>
+            <div class="verb-pill" onclick="speak('swim')">🏊 swim</div>
+            <div class="verb-pill" onclick="speak('jump')">🦘 jump</div>
+            <div class="verb-pill" onclick="speak('dance')">💃 dance</div>
+            <div class="verb-pill" onclick="speak('laugh')">😄 laugh</div>
+            <div class="verb-pill" onclick="speak('climb')">🧗 climb</div>
+            <div class="verb-pill" onclick="speak('catch')">⚾ catch</div>
+            <div class="verb-pill" onclick="speak('run')">🏃 run</div>
+        </div>
+
+        <div class="card">
+            <h2>🤝 Subject-Verb Agreement Challenge</h2>
+            
+            <div class="sentence-row">
+                1. He always 
+                <select class="select-inline" id="v1" data-ans="drinks">
+                    <option value="">???</option>
+                    <option value="drinks">drinks</option>
+                    <option value="drink">drink</option>
+                </select> milk when he's hot.
+            </div>
+
+            <div class="sentence-row">
+                2. Mom and Dad 
+                <select class="select-inline" id="v2" data-ans="love">
+                    <option value="">???</option>
+                    <option value="love">love</option>
+                    <option value="loves">loves</option>
+                </select> us very much.
+            </div>
+
+            <div class="sentence-row">
+                3. The stars 
+                <select class="select-inline" id="v3" data-ans="shine">
+                    <option value="">???</option>
+                    <option value="shine">shine</option>
+                    <option value="shines">shines</option>
+                </select> brightly at night.
+            </div>
+
+            <div class="sentence-row">
+                4. Our cat 
+                <select class="select-inline" id="v4" data-ans="climbs">
+                    <option value="">???</option>
+                    <option value="climbs">climbs</option>
+                    <option value="climb">climb</option>
+                </select> the tree in our garden.
+            </div>
+
+            <button class="btn-action" onclick="checkVerbs()">✨ Check Verb Agreement</button>
+            <div id="fb" style="margin-top:15px; font-weight:700;"></div>
+        </div>
+    </div>
+
+    <footer>🎉 Interactive Learning Playbook • Page 10</footer>
+
+    <script>
+        function checkVerbs() {
+            let count = 0;
+            for (let i = 1; i <= 4; i++) {
+                const el = document.getElementById('v' + i);
+                if (el.value === el.dataset.ans) {
+                    count++;
+                    el.style.borderColor = '#10B981';
+                } else {
+                    el.style.borderColor = '#EF4444';
+                }
+            }
+            const fb = document.getElementById('fb');
+            if (count === 4) {
+                fb.style.color = '#059669';
+                fb.textContent = '🎉 All subject-verb agreement rules correct!';
+            } else {
+                fb.style.color = '#D97706';
+                fb.textContent = `⭐ You got ${count} of 4 right! Try again!`;
+            }
+        }
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const u = new SpeechSynthesisUtterance(text);
+                u.rate = 0.9;
+                window.speechSynthesis.speak(u);
+            }
+        }
+    </script>
+</body>
+</html>

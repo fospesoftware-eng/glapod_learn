@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 3: World Monuments & Nationalities</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+        body { font-family: 'Quicksand', sans-serif; background: linear-gradient(135deg, #E0F2FE, #DBEAFE, #F3E8FF); color: #1E293B; padding: 20px; min-height: 100vh; }
+        .top-nav { max-width: 1000px; margin: 0 auto 20px auto; background: white; padding: 15px 25px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .btn-nav { text-decoration: none; font-family: 'Fredoka', sans-serif; background: #E0F2FE; color: #0284C7; padding: 8px 18px; border-radius: 30px; font-weight: 600; border: 2px solid #BAE6FD; transition: 0.2s; }
+        .btn-nav:hover { background: #0284C7; color: white; }
+        .hero { max-width: 1000px; margin: 0 auto 25px auto; background: linear-gradient(135deg, #0284C7, #2563EB); color: white; padding: 30px; border-radius: 25px; box-shadow: 0 15px 30px rgba(2,132,199,0.3); }
+        .hero h1 { font-family: 'Fredoka', sans-serif; font-size: 2.2rem; margin-bottom: 8px; }
+        .container { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 25px; }
+        .card { background: white; border-radius: 25px; padding: 28px; box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
+        .card h2 { font-family: 'Fredoka', sans-serif; color: #0369A1; margin-bottom: 15px; }
+        .monument-hero-img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); margin-bottom: 20px; }
+        .grid-monuments { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .monument-pill { background: #F0F9FF; border: 2px solid #BAE6FD; color: #0369A1; padding: 12px 18px; border-radius: 16px; font-family: 'Fredoka', sans-serif; font-size: 1.1rem; font-weight: 600; cursor: pointer; text-align: center; transition: 0.2s; }
+        .monument-pill:hover { transform: scale(1.05); background: #0284C7; color: white; }
+        .nationality-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .nationality-table th, .nationality-table td { padding: 12px 18px; border-bottom: 2px solid #E2E8F0; text-align: left; font-size: 1.1rem; }
+        .nationality-table th { background: #F0F9FF; color: #0369A1; font-family: 'Fredoka', sans-serif; }
+        footer { text-align: center; margin-top: 30px; color: #64748B; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="page2_proper_nouns.html" class="btn-nav">⬅️ Page 2</a>
+        <div style="font-family:'Fredoka',sans-serif; font-size:1.3rem; font-weight:700; color:#0369A1;">Page 3: Famous Places & Nationalities</div>
+        <a href="page4_singular_plural.html" class="btn-nav">Next: Page 4 ➔</a>
+    </div>
+
+    <div class="hero">
+        <h1>Famous Places, Monuments & People of the World!</h1>
+        <p>The names of famous places, buildings, and the people who live in a country are all <strong>proper nouns</strong>!</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>🏛️ Famous Monuments of the World</h2>
+            <img src="file:///Users/asterantony/.gemini/antigravity/brain/a6de559f-5ff1-4ea7-a7b0-809bbefa6701/world_monuments_art_1785944945816.jpg" alt="World Monuments" class="monument-hero-img">
+            <div class="grid-monuments">
+                <div class="monument-pill" onclick="speak('the Eiffel Tower')">🗼 the Eiffel Tower</div>
+                <div class="monument-pill" onclick="speak('the Taj Mahal')">🕌 the Taj Mahal</div>
+                <div class="monument-pill" onclick="speak('Big Ben')">🕰️ Big Ben</div>
+                <div class="monument-pill" onclick="speak('the Statue of Liberty')">🗽 the Statue of Liberty</div>
+                <div class="monument-pill" onclick="speak('the Sphinx')">🦁 the Sphinx</div>
+                <div class="monument-pill" onclick="speak('the Leaning Tower of Pisa')">🏛️ Leaning Tower of Pisa</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🌍 Country & People (Nationalities)</h2>
+            <table class="nationality-table">
+                <thead>
+                    <tr><th>Country (Proper Noun)</th><th>People (Proper Noun)</th><th>Listen 🔊</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>🇫🇷 France</td><td>the French</td><td><button class="btn-nav" onclick="speak('France, the French')">🔊</button></td></tr>
+                    <tr><td>🇯🇵 Japan</td><td>the Japanese</td><td><button class="btn-nav" onclick="speak('Japan, the Japanese')">🔊</button></td></tr>
+                    <tr><td>🇦🇺 Australia</td><td>Australians</td><td><button class="btn-nav" onclick="speak('Australia, Australians')">🔊</button></td></tr>
+                    <tr><td>🇮🇳 India</td><td>Indians</td><td><button class="btn-nav" onclick="speak('India, Indians')">🔊</button></td></tr>
+                    <tr><td>🇮🇹 Italy</td><td>Italians</td><td><button class="btn-nav" onclick="speak('Italy, Italians')">🔊</button></td></tr>
+                    <tr><td>🇺🇸 USA</td><td>Americans</td><td><button class="btn-nav" onclick="speak('USA, Americans')">🔊</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>🎉 Interactive Learning Playbook • Page 3</footer>
+
+    <script>
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const u = new SpeechSynthesisUtterance(text);
+                u.rate = 0.9;
+                window.speechSynthesis.speak(u);
+            }
+        }
+    </script>
+</body>
+</html>

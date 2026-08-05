@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Learning Playbook - Page 7: Nouns Fun World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --secondary: #06B6D4;
+            --accent-yellow: #F59E0B;
+            --accent-pink: #EC4899;
+            --accent-green: #10B981;
+            --accent-purple: #8B5CF6;
+            --bg-gradient: linear-gradient(135deg, #E0F2FE 0%, #F0FDFA 40%, #FAF5FF 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border-radius: 24px;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 30px -5px rgba(0, 0, 0, 0.08);
+            --shadow-glow: 0 0 25px rgba(79, 70, 229, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 15px 10px 80px 10px;
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation Bar */
+        .top-bar {
+            max-width: 1100px;
+            margin: 0 auto 25px auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: var(--border-radius);
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            position: sticky;
+            top: 15px;
+            z-index: 100;
+        }
+
+        .badge-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .page-badge {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+        }
+
+        .book-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1E1B4B;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stars-container {
+            display: flex;
+            gap: 4px;
+            font-size: 1.6rem;
+        }
+
+        .star {
+            color: #CBD5E1;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s;
+        }
+
+        .star.active {
+            color: var(--accent-yellow);
+            transform: scale(1.2) rotate(6deg);
+            filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.5));
+        }
+
+        .score-pill {
+            background: #EEF2FF;
+            color: var(--primary);
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            border: 2px solid #C7D2FE;
+        }
+
+        .btn-round {
+            background: white;
+            border: 2px solid #E2E8F0;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-round:hover {
+            transform: scale(1.1);
+            border-color: var(--primary);
+        }
+
+        /* Hero Banner */
+        .hero-header {
+            max-width: 1100px;
+            margin: 0 auto 30px auto;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.92), rgba(124, 58, 237, 0.92)), url('file:///Users/asterantony/.gemini/antigravity/brain/a6de559f-5ff1-4ea7-a7b0-809bbefa6701/nouns_header_banner_1785943869690.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 30px;
+            padding: 35px 45px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            max-width: 650px;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        .mascot-img {
+            max-width: 220px;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            border: 4px solid rgba(255,255,255,0.4);
+            transform: rotate(3deg);
+            transition: transform 0.3s;
+        }
+
+        .mascot-img:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        /* Container & Cards */
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .exercise-card {
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 35px;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+
+        .exercise-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px dashed #E2E8F0;
+        }
+
+        .exercise-tag {
+            background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+            color: white;
+            font-family: 'Fredoka', sans-serif;
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .exercise-instruction {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1E293B;
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .action-btn {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 12px 26px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-check {
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+        }
+
+        .btn-check:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 22px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-reset {
+            background: #F1F5F9;
+            color: #475569;
+            border: 2px solid #CBD5E1;
+        }
+
+        .btn-reset:hover {
+            background: #E2E8F0;
+            color: #1E293B;
+        }
+
+        .btn-speak {
+            background: #EEF2FF;
+            color: var(--primary);
+            border: 2px solid #C7D2FE;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-speak:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Exercise 1: Drag & Drop Noun Sorting */
+        .words-bank-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .words-pool {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            background: #F8FAFC;
+            border: 3px dashed #CBD5E1;
+            padding: 22px;
+            border-radius: 24px;
+            min-height: 95px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .draggable-word {
+            background: white;
+            color: #1E293B;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 2px solid #E2E8F0;
+            cursor: grab;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .draggable-word:hover {
+            transform: translateY(-4px) scale(1.06);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+        }
+
+        .draggable-word.selected {
+            border-color: var(--accent-yellow);
+            background: #FEF3C7;
+            transform: scale(1.08);
+        }
+
+        .drop-zones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .drop-zone {
+            background: white;
+            border-radius: 24px;
+            border: 3px dashed #CBD5E1;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 270px;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+
+        .drop-zone.drag-over {
+            border-color: var(--primary);
+            background: #EEF2FF;
+            transform: scale(1.03);
+        }
+
+        .zone-header {
+            width: 100%;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 16px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .zone-things .zone-header { background: #FEF3C7; color: #D97706; }
+        .zone-animals .zone-header { background: #DCFCE7; color: #15803D; }
+        .zone-places .zone-header { background: #E0F2FE; color: #0369A1; }
+        .zone-people .zone-header { background: #FCE7F3; color: #BE185D; }
+
+        .zone-slots {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        /* Exercise 2: Sentence Highlighter */
+        .mode-selector-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            background: #F1F5F9;
+            padding: 10px;
+            border-radius: 50px;
+            width: fit-content;
+        }
+
+        .mode-btn {
+            border: none;
+            padding: 12px 26px;
+            border-radius: 40px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mode-btn.active-common {
+            background: #10B981;
+            color: white;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+        }
+
+        .mode-btn.active-proper {
+            background: #8B5CF6;
+            color: white;
+            box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+        }
+
+        .sentences-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sentence-item {
+            background: white;
+            padding: 22px 28px;
+            border-radius: 22px;
+            border: 2px solid #E2E8F0;
+            font-size: 1.3rem;
+            line-height: 1.9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sentence-content-wrap {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .sentence-num {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+            background: #EEF2FF;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .sentence-words-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 4px;
+            align-items: center;
+        }
+
+        .interactive-word {
+            padding: 4px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.15s;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .interactive-word:hover {
+            background: #F1F5F9;
+        }
+
+        .word-common {
+            text-decoration: underline 5px #10B981;
+            text-underline-offset: 6px;
+            background: #DCFCE7;
+            color: #065F46;
+            border-radius: 8px;
+        }
+
+        .word-proper {
+            border: 3px solid #8B5CF6;
+            border-radius: 24px;
+            background: #F3E8FF;
+            color: #5B21B6;
+            padding: 4px 14px;
+            box-shadow: 0 2px 10px rgba(139, 92, 246, 0.25);
+        }
+
+        /* Exercise 3: Passage C / P Tagging */
+        .story-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .story-box {
+            background: #FFFBEB;
+            border: 3px solid #FDE68A;
+            border-radius: 28px;
+            padding: 32px 38px;
+            font-size: 1.35rem;
+            line-height: 2.3;
+            color: #1E293B;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .story-img-card {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid white;
+        }
+
+        .story-img-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .tag-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: 2px solid #CBD5E1;
+            background: white;
+            color: #64748B;
+            cursor: pointer;
+            margin: 0 6px;
+            vertical-align: middle;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+        }
+
+        .tag-btn:hover {
+            transform: scale(1.18);
+        }
+
+        .tag-btn.tag-C {
+            background: #10B981;
+            color: white;
+            border-color: #059669;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+
+        .tag-btn.tag-P {
+            background: #8B5CF6;
+            color: white;
+            border-color: #7C3AED;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Floating Owl Helper Mascot */
+        .owl-helper-widget {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 200;
+            cursor: pointer;
+        }
+
+        .speech-bubble {
+            background: white;
+            padding: 14px 22px;
+            border-radius: 20px;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.05rem;
+            color: var(--primary);
+            max-width: 250px;
+            border: 2px solid #C7D2FE;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        .owl-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 3px solid white;
+            background: var(--primary);
+            overflow: hidden;
+        }
+
+        .owl-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Feedback Modal & Celebrations */
+        .feedback-banner {
+            margin-top: 25px;
+            padding: 18px 28px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: none;
+            align-items: center;
+            gap: 14px;
+            animation: slideUp 0.3s ease;
+        }
+
+        .feedback-success {
+            background: #D1FAE5;
+            color: #065F46;
+            border: 2px solid #A7F3D0;
+        }
+
+        .feedback-partial {
+            background: #FEF3C7;
+            color: #92400E;
+            border: 2px solid #FDE68A;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        footer {
+            max-width: 1100px;
+            margin: 45px auto 0 auto;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .story-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                padding: 25px;
+            }
+            .mascot-img {
+                max-width: 160px;
+            }
+            .top-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .exercise-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .exercise-instruction {
+                margin-left: 0;
+            }
+            .sentence-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Floating Owl Helper Mascot -->
+    <div class="owl-helper-widget" onclick="askOwlHelper()">
+        <div class="speech-bubble" id="owlSpeech">
+            🦉 Hi kids! Need a hint? Tap me anytime!
+        </div>
+        <div class="owl-avatar">
+            <img src="file:///Users/asterantony/.gemini/antigravity/brain/a6de559f-5ff1-4ea7-a7b0-809bbefa6701/learning_mascot_1785943847694.jpg" alt="Professor Hoot">
+        </div>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="badge-title">
+            <span class="page-badge">PAGE 7 OF 10</span>
+            <span class="book-title">Grammar Playbook: Nouns Masterclass</span>
+        </div>
+        <div class="progress-container">
+            <div class="stars-container" id="starsContainer">
+                <span class="star" id="star1">★</span>
+                <span class="star" id="star2">★</span>
+                <span class="star" id="star3">★</span>
+            </div>
+            <div class="score-pill" id="scorePill">Score: 0 / 33</div>
+            <button class="btn-round" id="soundBtn" title="Toggle Sound FX">🔊</button>
+        </div>
+    </div>
+
+    <!-- Hero Header Banner -->
+    <div class="hero-header">
+        <div class="hero-text">
+            <h1>Chapter 1: Common & Proper Nouns</h1>
+            <p>Welcome to Page 7! Put your grammar superhero skills to work by sorting nouns, marking sentences, and solving the story puzzle!</p>
+        </div>
+        <img src="file:///Users/asterantony/.gemini/antigravity/brain/a6de559f-5ff1-4ea7-a7b0-809bbefa6701/learning_mascot_1785943847694.jpg" alt="Grammar Mascot Owl" class="mascot-img" id="heroMascot">
+    </div>
+
+    <div class="main-container">
+
+        <!-- EXERCISE 1 -->
+        <div class="exercise-card" id="ex1Card">
+            <div class="exercise-header">
+                <span class="exercise-tag">EXERCISE 1</span>
+                <div class="exercise-instruction">Write each common noun under the correct heading.</div>
+                <div style="display:flex; gap:10px;">
+                    <button class="action-btn btn-reset" onclick="resetEx1()">🔄 Reset</button>
+                    <button class="action-btn btn-check" onclick="checkEx1()">✨ Check Answers</button>
+                </div>
+            </div>
+
+            <div class="words-bank-title">
+                💡 Drag word cards into the boxes below (or click a word then click a box!):
+            </div>
+            
+            <div class="words-pool" id="wordsPool">
+                <!-- 12 Words with Icons -->
+                <div class="draggable-word" draggable="true" data-word="theater" data-category="places">🏛️ theater <button class="btn-speak" onclick="speakWord(event, 'theater')">🔊</button></div>
+                <div class="draggable-word" draggable="true" data-word="lion" data-category="animals">🦁 lion <button class="btn-speak" onclick="speakWord(event, 'lion')">🔊</button></div>
+                <div class="draggable-word" draggable="true" data-word="father" data-category="people">👨 father <button class="btn-speak" onclick="speakWord(event, 'father')">🔊</button></div>
+                <div class="draggable-word" draggable="true" data-word="brother" data-category="people">👦 brother <button class="btn-speak" onclick="speakWord(event, 'brother')">🔊</button></div>
+                <div class="draggable-word" draggable="true" data-word="doctor" data-category="people">👨‍⚕️ doctor <button class="btn-speak" onclick="speakWord(event, 'doctor')">🔊</button></div>
+                <div class="draggable-word" draggable="true" data-word="restaurant" data-category="places">🍕 restaurant <button class="btn-speak" onclick="speakWord(event, 'restaurant')">🔊</button></div>
+                <div class="draggable-word" draggable="true" data-word="builder" data-category="people">👷 builder <button class="btn-speak" onclick="speakWord(event, 'builder')">🔊</button></div>
+                <div class="draggable-word" draggable="true" data-word="stove" data-category="things">🍳 stove <button class="btn-speak" onclick="speakWord(event, 'stove')">🔊</button></div>
+                <div class="draggable-word" draggable="true" data-word="elephant" data-category="animals">🐘 elephant <button class="btn-speak" onclick="speakWord(event, 'elephant')">🔊</button></div>
+                <div class="draggable-word" draggable="true" data-word="kangaroo" data-category="animals">🦘 kangaroo <button class="btn-speak" onclick="speakWord(event, 'kangaroo')">🔊</button></div>
+                <div class="draggable-word" draggable="true" data-word="museum" data-category="places">🖼️ museum <button class="btn-speak" onclick="speakWord(event, 'museum')">🔊</button></div>
+                <div class="draggable-word" draggable="true" data-word="library" data-category="places">📚 library <button class="btn-speak" onclick="speakWord(event, 'library')">🔊</button></div>
+            </div>
+
+            <div class="drop-zones-grid">
+                <div class="drop-zone zone-things" data-category="things">
+                    <div class="zone-header">📦 Things</div>
+                    <div class="zone-slots"></div>
+                </div>
+                <div class="drop-zone zone-animals" data-category="animals">
+                    <div class="zone-header">🦁 Animals</div>
+                    <div class="zone-slots"></div>
+                </div>
+                <div class="drop-zone zone-places" data-category="places">
+                    <div class="zone-header">🏛️ Places</div>
+                    <div class="zone-slots"></div>
+                </div>
+                <div class="drop-zone zone-people" data-category="people">
+                    <div class="zone-header">👨‍⚕️ People</div>
+                    <div class="zone-slots"></div>
+                </div>
+            </div>
+
+            <div class="feedback-banner" id="ex1Feedback"></div>
+        </div>
+
+        <!-- EXERCISE 2 -->
+        <div class="exercise-card" id="ex2Card">
+            <div class="exercise-header">
+                <span class="exercise-tag">EXERCISE 2</span>
+                <div class="exercise-instruction">Underline the common nouns and circle the proper nouns in these sentences.</div>
+                <div style="display:flex; gap:10px;">
+                    <button class="action-btn btn-reset" onclick="resetEx2()">🔄 Reset</button>
+                    <button class="action-btn btn-check" onclick="checkEx2()">✨ Check Sentences</button>
+                </div>
+            </div>
+
+            <!-- Tool selector bar -->
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:15px; margin-bottom:25px;">
+                <div class="mode-selector-bar">
+                    <button class="mode-btn active-common" id="modeCommonBtn" onclick="setEx2Mode('common')">
+                        🟢 Underline Common Noun
+                    </button>
+                    <button class="mode-btn" id="modeProperBtn" onclick="setEx2Mode('proper')">
+                        🟣 Circle Proper Noun
+                    </button>
+                </div>
+                <div style="font-weight:700; color:var(--text-muted); font-size:1.05rem;">
+                    💡 Click a word to mark it with your active tool! Click again to clear.
+                </div>
+            </div>
+
+            <div class="sentences-list" id="sentencesList">
+                <!-- 10 Sentences rendered dynamically -->
+            </div>
+
+            <div class="feedback-banner" id="ex2Feedback"></div>
+        </div>
+
+        <!-- EXERCISE 3 -->
+        <div class="exercise-card" id="ex3Card">
+            <div class="exercise-header">
+                <span class="exercise-tag">EXERCISE 3</span>
+                <div class="exercise-instruction">Read the passage. Put a [C] in the box after a common noun and a [P] after a proper noun.</div>
+                <div style="display:flex; gap:10px;">
+                    <button class="action-btn btn-reset" onclick="resetEx3()">🔄 Reset</button>
+                    <button class="action-btn btn-check" onclick="checkEx3()">✨ Check Story</button>
+                </div>
+            </div>
+
+            <div style="margin-bottom:20px; font-weight:700; color:var(--text-muted); font-size:1.1rem;">
+                Click the boxes [ ? ] after each noun to toggle between 🟢 [C] Common Noun and 🟣 [P] Proper Noun!
+            </div>
+
+            <div class="story-container">
+                <div class="story-box" id="storyBox">
+                    Mr. Peters <button class="tag-btn" data-answer="P" onclick="toggleTag(this)">?</button>
+                    lives in Maine <button class="tag-btn" data-answer="P" onclick="toggleTag(this)">?</button>
+                    in a big house <button class="tag-btn" data-answer="C" onclick="toggleTag(this)">?</button>
+                    by the sea <button class="tag-btn" data-answer="C" onclick="toggleTag(this)">?</button>.
+                    He has three cats <button class="tag-btn" data-answer="C" onclick="toggleTag(this)">?</button>
+                    and a dog <button class="tag-btn" data-answer="C" onclick="toggleTag(this)">?</button>.
+                    He likes to travel to different countries <button class="tag-btn" data-answer="C" onclick="toggleTag(this)">?</button>.
+                    Last Christmas <button class="tag-btn" data-answer="P" onclick="toggleTag(this)">?</button>,
+                    he went to Paris <button class="tag-btn" data-answer="P" onclick="toggleTag(this)">?</button>
+                    and saw the Eiffel Tower <button class="tag-btn" data-answer="P" onclick="toggleTag(this)">?</button>.
+                    He enjoyed eating French food <button class="tag-btn" data-answer="P" onclick="toggleTag(this)">?</button>
+                    in nice restaurants <button class="tag-btn" data-answer="C" onclick="toggleTag(this)">?</button>.
+                </div>
+                <div class="story-img-card">
+                    <img src="file:///Users/asterantony/.gemini/antigravity/brain/a6de559f-5ff1-4ea7-a7b0-809bbefa6701/paris_eiffel_art_1785944088631.jpg" alt="Mr Peters in Paris">
+                </div>
+            </div>
+
+            <div class="feedback-banner" id="ex3Feedback"></div>
+        </div>
+
+    </div>
+
+    <footer>
+        🎉 Fospe Innovations Hub — Interactive Learning Playbook Series • Page 7 Preview
+    </footer>
+
+    <script>
+        /* Audio Synthesizer for Fun Sound FX */
+        let soundEnabled = true;
+        const soundBtn = document.getElementById('soundBtn');
+        soundBtn.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundBtn.textContent = soundEnabled ? '🔊' : '🔇';
+        });
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'pop') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(400, ctx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.08);
+                    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.08);
+                } else if (type === 'success') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1); // E5
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2); // G5
+                    osc.frequency.setValueAtTime(1046.50, ctx.currentTime + 0.3); // C6
+                    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.5);
+                } else if (type === 'error') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.15);
+                    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.3);
+                }
+            } catch (e) {}
+        }
+
+        /* Text to Speech Read Aloud */
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 0.9;
+                utterance.pitch = 1.1;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function speakWord(e, word) {
+            e.stopPropagation();
+            speakText(word);
+        }
+
+        /* Owl Helper Tips */
+        const owlTips = [
+            "💡 Proper nouns are special names for people, places, or holidays. They ALWAYS start with a capital letter like Paris or Harry Potter!",
+            "💡 Common nouns are general words for things, animals, places, and people, like dog, book, or doctor!",
+            "💡 Need help in Exercise 1? Remember: Doctor, Father, Builder, Brother are all PEOPLE!",
+            "💡 Did you know? Theater, Restaurant, Museum, Library are PLACES you can visit!"
+        ];
+        let tipIdx = 0;
+        function askOwlHelper() {
+            const speech = document.getElementById('owlSpeech');
+            tipIdx = (tipIdx + 1) % owlTips.length;
+            speech.textContent = owlTips[tipIdx];
+            speakText(owlTips[tipIdx].replace(/[💡🦉]/g, ''));
+            playSound('pop');
+        }
+
+        /* Overall Score Tracking */
+        let ex1Score = 0; // max 12
+        let ex2Score = 0; // max 10
+        let ex3Score = 0; // max 11
+        const TOTAL_MAX = 33;
+
+        function updateGlobalScore() {
+            const total = ex1Score + ex2Score + ex3Score;
+            document.getElementById('scorePill').textContent = `Score: ${total} / ${TOTAL_MAX}`;
+
+            const star1 = document.getElementById('star1');
+            const star2 = document.getElementById('star2');
+            const star3 = document.getElementById('star3');
+
+            if (total >= 10) star1.classList.add('active'); else star1.classList.remove('active');
+            if (total >= 22) star2.classList.add('active'); else star2.classList.remove('active');
+            if (total >= 32) {
+                star3.classList.add('active');
+                triggerConfetti();
+            } else star3.classList.remove('active');
+        }
+
+        /* EXERCISE 1: Drag & Drop Logic */
+        let selectedWordElem = null;
+
+        document.querySelectorAll('.draggable-word').forEach(word => {
+            word.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', word.dataset.word);
+                word.classList.add('dragging');
+                playSound('pop');
+            });
+
+            word.addEventListener('dragend', () => {
+                word.classList.remove('dragging');
+            });
+
+            // Tap/Click to select fallback
+            word.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') return;
+                e.stopPropagation();
+                if (selectedWordElem === word) {
+                    selectedWordElem.classList.remove('selected');
+                    selectedWordElem = null;
+                } else {
+                    if (selectedWordElem) selectedWordElem.classList.remove('selected');
+                    selectedWordElem = word;
+                    selectedWordElem.classList.add('selected');
+                    playSound('pop');
+                }
+            });
+        });
+
+        document.querySelectorAll('.drop-zone').forEach(zone => {
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                zone.classList.add('drag-over');
+            });
+
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('drag-over');
+            });
+
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('drag-over');
+                const draggingWord = document.querySelector('.draggable-word.dragging');
+                if (draggingWord) {
+                    zone.querySelector('.zone-slots').appendChild(draggingWord);
+                    playSound('pop');
+                }
+            });
+
+            // Click zone to place selected word
+            zone.addEventListener('click', () => {
+                if (selectedWordElem) {
+                    zone.querySelector('.zone-slots').appendChild(selectedWordElem);
+                    selectedWordElem.classList.remove('selected');
+                    selectedWordElem = null;
+                    playSound('pop');
+                }
+            });
+        });
+
+        function checkEx1() {
+            let correctCount = 0;
+            const words = document.querySelectorAll('.draggable-word');
+
+            words.forEach(word => {
+                const parentZone = word.closest('.drop-zone');
+                if (parentZone && parentZone.dataset.category === word.dataset.category) {
+                    correctCount++;
+                    word.style.borderColor = '#10B981';
+                    word.style.background = '#DCFCE7';
+                } else {
+                    word.style.borderColor = '#EF4444';
+                    word.style.background = '#FEE2E2';
+                }
+            });
+
+            ex1Score = correctCount;
+            updateGlobalScore();
+
+            const feedback = document.getElementById('ex1Feedback');
+            feedback.style.display = 'flex';
+            if (correctCount === 12) {
+                feedback.className = 'feedback-banner feedback-success';
+                feedback.innerHTML = `🎉 Amazing job! You sorted all 12 common nouns correctly! (+12 pts)`;
+                playSound('success');
+            } else {
+                feedback.className = 'feedback-banner feedback-partial';
+                feedback.innerHTML = `⭐ You got ${correctCount} out of 12 correct! Green cards are right. Try moving the red ones!`;
+                playSound('error');
+            }
+        }
+
+        function resetEx1() {
+            const pool = document.getElementById('wordsPool');
+            document.querySelectorAll('.draggable-word').forEach(word => {
+                word.style.borderColor = '#E2E8F0';
+                word.style.background = 'white';
+                word.classList.remove('selected');
+                pool.appendChild(word);
+            });
+            ex1Score = 0;
+            updateGlobalScore();
+            document.getElementById('ex1Feedback').style.display = 'none';
+            playSound('pop');
+        }
+
+
+        /* EXERCISE 2: Sentence Highlighter */
+        let currentEx2Mode = 'common'; // 'common' or 'proper'
+
+        function setEx2Mode(mode) {
+            currentEx2Mode = mode;
+            const btnCommon = document.getElementById('modeCommonBtn');
+            const btnProper = document.getElementById('modeProperBtn');
+
+            if (mode === 'common') {
+                btnCommon.className = 'mode-btn active-common';
+                btnProper.className = 'mode-btn';
+            } else {
+                btnCommon.className = 'mode-btn';
+                btnProper.className = 'mode-btn active-proper';
+            }
+            playSound('pop');
+        }
+
+        const sentencesData = [
+            { id: 1, text: "I told Uncle John about my accident.", answers: { "Uncle John": "proper", "accident": "common" } },
+            { id: 2, text: "Kim and Stephanie wore masks on Halloween.", answers: { "Kim": "proper", "Stephanie": "proper", "masks": "common", "Halloween": "proper" } },
+            { id: 3, text: "The lawnmower is broken.", answers: { "lawnmower": "common" } },
+            { id: 4, text: "We’re going to the movies tomorrow.", answers: { "movies": "common" } },
+            { id: 5, text: "The lion is playing with one of its cubs.", answers: { "lion": "common", "cubs": "common" } },
+            { id: 6, text: "My sister’s favorite soccer player is David Beckham.", answers: { "sister": "common", "soccer player": "common", "David Beckham": "proper" } },
+            { id: 7, text: "I’m watching a videotape about the Sahara Desert.", answers: { "videotape": "common", "Sahara Desert": "proper" } },
+            { id: 8, text: "The tourists visited Rome and saw the Colosseum.", answers: { "tourists": "common", "Rome": "proper", "Colosseum": "proper" } },
+            { id: 9, text: "Does this bus go to the stadium?", answers: { "bus": "common", "stadium": "common" } },
+            { id: 10, text: "We’re reading a story about a boy called Harry Potter.", answers: { "story": "common", "boy": "common", "Harry Potter": "proper" } }
+        ];
+
+        function renderSentences() {
+            const container = document.getElementById('sentencesList');
+            container.innerHTML = '';
+
+            sentencesData.forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'sentence-item';
+
+                const contentWrap = document.createElement('div');
+                contentWrap.className = 'sentence-content-wrap';
+
+                const num = document.createElement('div');
+                num.className = 'sentence-num';
+                num.textContent = item.id;
+
+                const wordsContainer = document.createElement('div');
+                wordsContainer.className = 'sentence-words-container';
+
+                const wordsList = parseSentenceWords(item.text);
+
+                wordsList.forEach(wordObj => {
+                    const span = document.createElement('span');
+                    span.className = 'interactive-word';
+                    span.textContent = wordObj.text;
+                    span.dataset.cleanWord = wordObj.clean;
+                    
+                    span.addEventListener('click', () => {
+                        if (span.classList.contains(`word-${currentEx2Mode}`)) {
+                            span.classList.remove(`word-${currentEx2Mode}`);
+                        } else {
+                            span.classList.remove('word-common', 'word-proper');
+                            span.classList.add(`word-${currentEx2Mode}`);
+                        }
+                        playSound('pop');
+                    });
+
+                    wordsContainer.appendChild(span);
+                });
+
+                contentWrap.appendChild(num);
+                contentWrap.appendChild(wordsContainer);
+                row.appendChild(contentWrap);
+
+                const speakBtn = document.createElement('button');
+                speakBtn.className = 'btn-speak';
+                speakBtn.innerHTML = '🔊 Read';
+                speakBtn.onclick = () => speakText(item.text);
+                row.appendChild(speakBtn);
+
+                container.appendChild(row);
+            });
+        }
+
+        function parseSentenceWords(text) {
+            let result = [];
+            const tokens = text.split(/(\s+)/);
+            tokens.forEach(tok => {
+                if (tok.trim().length > 0) {
+                    const clean = tok.replace(/[.,’'!?]/g, '');
+                    result.push({ text: tok, clean: clean });
+                } else {
+                    result.push({ text: tok, clean: '' });
+                }
+            });
+            return result;
+        }
+
+        function checkEx2() {
+            let correctSentences = 0;
+
+            sentencesData.forEach((item, index) => {
+                const sentenceItem = document.querySelectorAll('.sentence-item')[index];
+                const words = sentenceItem.querySelectorAll('.interactive-word');
+                let sentenceIsRight = true;
+
+                Object.keys(item.answers).forEach(targetWord => {
+                    const expectedType = item.answers[targetWord];
+                    let found = false;
+
+                    words.forEach(w => {
+                        if (w.dataset.cleanWord.toLowerCase() === targetWord.toLowerCase()) {
+                            if (w.classList.contains(`word-${expectedType}`)) {
+                                found = true;
+                            }
+                        }
+                    });
+
+                    if (!found) sentenceIsRight = false;
+                });
+
+                if (sentenceIsRight) {
+                    correctSentences++;
+                    sentenceItem.style.borderColor = '#10B981';
+                    sentenceItem.style.background = '#F0FDF4';
+                } else {
+                    sentenceItem.style.borderColor = '#F59E0B';
+                    sentenceItem.style.background = '#FFFBEB';
+                }
+            });
+
+            ex2Score = correctSentences;
+            updateGlobalScore();
+
+            const feedback = document.getElementById('ex2Feedback');
+            feedback.style.display = 'flex';
+            if (correctSentences === 10) {
+                feedback.className = 'feedback-banner feedback-success';
+                feedback.innerHTML = `🎉 Outstanding! You correctly identified all common & proper nouns across all 10 sentences! (+10 pts)`;
+                playSound('success');
+            } else {
+                feedback.className = 'feedback-banner feedback-partial';
+                feedback.innerHTML = `⭐ You solved ${correctSentences} of 10 sentences accurately! Green borders indicate completed sentences.`;
+                playSound('error');
+            }
+        }
+
+        function resetEx2() {
+            document.querySelectorAll('.interactive-word').forEach(w => {
+                w.classList.remove('word-common', 'word-proper');
+            });
+            document.querySelectorAll('.sentence-item').forEach(item => {
+                item.style.borderColor = '#E2E8F0';
+                item.style.background = 'white';
+            });
+            ex2Score = 0;
+            updateGlobalScore();
+            document.getElementById('ex2Feedback').style.display = 'none';
+            playSound('pop');
+        }
+
+
+        /* EXERCISE 3: Passage Tagging [C] / [P] */
+        function toggleTag(btn) {
+            const states = ['?', 'C', 'P'];
+            let current = btn.textContent;
+            let nextIndex = (states.indexOf(current) + 1) % states.length;
+            let next = states[nextIndex];
+
+            btn.textContent = next;
+            btn.className = `tag-btn tag-${next}`;
+            playSound('pop');
+        }
+
+        function checkEx3() {
+            const buttons = document.querySelectorAll('#storyBox .tag-btn');
+            let correctCount = 0;
+
+            buttons.forEach(btn => {
+                if (btn.textContent === btn.dataset.answer) {
+                    correctCount++;
+                    btn.style.borderColor = '#10B981';
+                } else {
+                    btn.style.borderColor = '#EF4444';
+                }
+            });
+
+            ex3Score = correctCount;
+            updateGlobalScore();
+
+            const feedback = document.getElementById('ex3Feedback');
+            feedback.style.display = 'flex';
+            if (correctCount === buttons.length) {
+                feedback.className = 'feedback-banner feedback-success';
+                feedback.innerHTML = `🎉 Fantastic! Story completed perfectly! You got all ${correctCount} C & P boxes right! (+${correctCount} pts)`;
+                playSound('success');
+            } else {
+                feedback.className = 'feedback-banner feedback-partial';
+                feedback.innerHTML = `⭐ You got ${correctCount} of ${buttons.length} correct in the story. Green borders mean correct!`;
+                playSound('error');
+            }
+        }
+
+        function resetEx3() {
+            document.querySelectorAll('#storyBox .tag-btn').forEach(btn => {
+                btn.textContent = '?';
+                btn.className = 'tag-btn';
+                btn.style.borderColor = '#CBD5E1';
+            });
+            ex3Score = 0;
+            updateGlobalScore();
+            document.getElementById('ex3Feedback').style.display = 'none';
+            playSound('pop');
+        }
+
+        /* Confetti Fireworks Generator */
+        function triggerConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#4F46E5', '#10B981', '#F59E0B', '#EC4899', '#8B5CF6', '#06B6D4'];
+
+            for (let i = 0; i < 160; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    vy: Math.random() * 5 + 3,
+                    vx: Math.random() * 4 - 2,
+                    rot: Math.random() * 360
+                });
+            }
+
+            let animationFrame;
+            function render() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let alive = false;
+
+                particles.forEach(p => {
+                    p.y += p.vy;
+                    p.x += p.vx;
+                    p.rot += 4;
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.rot * Math.PI) / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                    ctx.restore();
+
+                    if (p.y < canvas.height) alive = true;
+                });
+
+                if (alive) {
+                    animationFrame = requestAnimationFrame(render);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            }
+
+            render();
+        }
+
+        // Initialize on page load
+        renderSentences();
+    </script>
+</body>
+</html>

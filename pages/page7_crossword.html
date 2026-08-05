@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 7: Interactive Noun Crossword Puzzle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+        body { font-family: 'Quicksand', sans-serif; background: linear-gradient(135deg, #E0F2FE, #F0FDFA, #FAF5FF); color: #1E293B; padding: 20px; min-height: 100vh; }
+        .top-nav { max-width: 1000px; margin: 0 auto 20px auto; background: white; padding: 15px 25px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .btn-nav { text-decoration: none; font-family: 'Fredoka', sans-serif; background: #EEF2FF; color: #4F46E5; padding: 8px 18px; border-radius: 30px; font-weight: 600; border: 2px solid #C7D2FE; transition: 0.2s; }
+        .btn-nav:hover { background: #4F46E5; color: white; }
+        .hero { max-width: 1000px; margin: 0 auto 25px auto; background: linear-gradient(135deg, #4F46E5, #7C3AED); color: white; padding: 30px; border-radius: 25px; box-shadow: 0 15px 30px rgba(79,70,229,0.3); }
+        .hero h1 { font-family: 'Fredoka', sans-serif; font-size: 2.2rem; margin-bottom: 8px; }
+        .container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .card { background: white; border-radius: 25px; padding: 28px; box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
+        .card h2 { font-family: 'Fredoka', sans-serif; color: #4338CA; margin-bottom: 15px; }
+        .clue-list { font-size: 1.05rem; line-height: 1.8; }
+        .clue-item { margin-bottom: 8px; font-weight: 600; }
+        .clue-item input { font-family: 'Fredoka', sans-serif; font-size: 1.05rem; font-weight: 700; width: 140px; padding: 4px 10px; border: 2px solid #CBD5E1; border-radius: 10px; text-transform: uppercase; margin-left: 8px; text-align: center; }
+        .btn-action { font-family: 'Fredoka', sans-serif; background: #10B981; color: white; border: none; padding: 12px 28px; border-radius: 50px; font-size: 1.1rem; cursor: pointer; transition: 0.2s; margin-top: 15px; }
+        .btn-action:hover { transform: scale(1.05); background: #059669; }
+        .feedback { margin-top: 15px; font-weight: 700; font-size: 1.15rem; display: none; }
+        footer { text-align: center; margin-top: 30px; color: #64748B; font-weight: 600; }
+        @media(max-width:768px) { .container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="page6_masculine_feminine.html" class="btn-nav">⬅️ Page 6</a>
+        <div style="font-family:'Fredoka',sans-serif; font-size:1.3rem; font-weight:700; color:#4338CA;">Page 7: Exercise 10 Crossword</div>
+        <a href="page8_reflexive_pronouns.html" class="btn-nav">Next: Page 8 ➔</a>
+    </div>
+
+    <div class="hero">
+        <h1>🧩 Exercise 10: Gender Nouns Crossword Puzzle!</h1>
+        <p>Complete the crossword by writing the opposite masculine or feminine noun for each clue!</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>➡️ ACROSS CLUES</h2>
+            <div class="clue-list">
+                <div class="clue-item">3. Feminine of <strong>bull</strong>: <input type="text" id="a3" data-ans="COW" placeholder="???"></div>
+                <div class="clue-item">5. Feminine of <strong>man</strong>: <input type="text" id="a5" data-ans="WOMAN" placeholder="???"></div>
+                <div class="clue-item">6. Feminine of <strong>fox</strong>: <input type="text" id="a6" data-ans="VIXEN" placeholder="???"></div>
+                <div class="clue-item">9. Masculine of <strong>princess</strong>: <input type="text" id="a9" data-ans="PRINCE" placeholder="???"></div>
+                <div class="clue-item">10. Masculine of <strong>empress</strong>: <input type="text" id="a10" data-ans="EMPEROR" placeholder="???"></div>
+                <div class="clue-item">12. Feminine of <strong>stallion</strong>: <input type="text" id="a12" data-ans="MARE" placeholder="???"></div>
+                <div class="clue-item">13. Feminine of <strong>brother</strong>: <input type="text" id="a13" data-ans="SISTER" placeholder="???"></div>
+                <div class="clue-item">14. Feminine of <strong>king</strong>: <input type="text" id="a14" data-ans="QUEEN" placeholder="???"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>⬇️ DOWN CLUES</h2>
+            <div class="clue-list">
+                <div class="clue-item">1. Masculine of <strong>actress</strong>: <input type="text" id="d1" data-ans="ACTOR" placeholder="???"></div>
+                <div class="clue-item">2. Feminine of <strong>waiter</strong>: <input type="text" id="d2" data-ans="WAITRESS" placeholder="???"></div>
+                <div class="clue-item">4. Feminine of <strong>husband</strong>: <input type="text" id="d4" data-ans="WIFE" placeholder="???"></div>
+                <div class="clue-item">7. Feminine of <strong>nephew</strong>: <input type="text" id="d7" data-ans="NIECE" placeholder="???"></div>
+                <div class="clue-item">8. Masculine of <strong>aunt</strong>: <input type="text" id="d8" data-ans="UNCLE" placeholder="???"></div>
+                <div class="clue-item">11. Masculine of <strong>goose</strong>: <input type="text" id="d11" data-ans="GANDER" placeholder="???"></div>
+            </div>
+
+            <button class="btn-action" onclick="checkCrossword()">✨ Check Crossword Answers</button>
+            <div class="feedback" id="feedback"></div>
+        </div>
+    </div>
+
+    <footer>🎉 Interactive Learning Playbook • Page 7</footer>
+
+    <script>
+        function checkCrossword() {
+            const inputs = document.querySelectorAll('input[type="text"]');
+            let correct = 0;
+            inputs.forEach(inp => {
+                const val = inp.value.trim().toUpperCase();
+                if (val === inp.dataset.ans) {
+                    correct++;
+                    inp.style.borderColor = '#10B981';
+                    inp.style.background = '#DCFCE7';
+                } else {
+                    inp.style.borderColor = '#EF4444';
+                    inp.style.background = '#FEE2E2';
+                }
+            });
+            const fb = document.getElementById('feedback');
+            fb.style.display = 'block';
+            if (correct === inputs.length) {
+                fb.style.color = '#059669';
+                fb.textContent = `🎉 Crossword Solved Perfectly! (${correct}/${inputs.length})`;
+            } else {
+                fb.style.color = '#D97706';
+                fb.textContent = `⭐ You got ${correct} of ${inputs.length} clues right! Check red boxes.`;
+            }
+        }
+    </script>
+</body>
+</html>
