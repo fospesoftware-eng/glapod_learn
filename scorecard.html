@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar Playbook — Student Scorecard & Certificate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@600;700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --accent-yellow: #F59E0B;
+            --accent-pink: #EC4899;
+            --accent-green: #10B981;
+            --accent-purple: #8B5CF6;
+            --bg: linear-gradient(135deg, #E0F2FE 0%, #F0FDFA 40%, #FAF5FF 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+        body { font-family: 'Quicksand', sans-serif; background: var(--bg); color: #1E293B; padding: 25px 15px 80px 15px; min-height: 100vh; }
+
+        .top-nav {
+            max-width: 1000px;
+            margin: 0 auto 25px auto;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .btn-nav {
+            text-decoration: none;
+            font-family: 'Fredoka', sans-serif;
+            background: #EEF2FF;
+            color: var(--primary);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 2px solid #C7D2FE;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-nav:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .scorecard-header {
+            max-width: 1000px;
+            margin: 0 auto 30px auto;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+            color: white;
+            padding: 35px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .scorecard-header h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 24px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.06);
+            border: 2px solid #E2E8F0;
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: #64748B;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-top: 4px;
+        }
+
+        /* Badges Grid */
+        .badges-card {
+            background: white;
+            border-radius: 26px;
+            padding: 30px;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.06);
+            border: 2px solid #E2E8F0;
+        }
+
+        .badges-card h2 {
+            font-family: 'Fredoka', sans-serif;
+            color: #1E1B4B;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .badge-item {
+            background: #F8FAFC;
+            border: 2px dashed #CBD5E1;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .badge-item.unlocked {
+            background: #F0FDF4;
+            border: 2px solid #10B981;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .badge-img {
+            font-size: 3rem;
+            margin-bottom: 8px;
+        }
+
+        .badge-name {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1E293B;
+        }
+
+        .badge-status {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 6px;
+            color: #64748B;
+        }
+
+        .badge-item.unlocked .badge-status {
+            color: #059669;
+        }
+
+        /* Printable Certificate Frame */
+        .certificate-card {
+            background: #FFFBEB;
+            border: 8px double #F59E0B;
+            border-radius: 30px;
+            padding: 45px 35px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .cert-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.4rem;
+            color: #B45309;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .cert-subtitle {
+            font-size: 1.25rem;
+            color: #78350F;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .student-name-input {
+            font-family: 'Caveat', cursive;
+            font-size: 2.8rem;
+            color: #1E1B4B;
+            border: none;
+            border-bottom: 3px dashed #F59E0B;
+            background: transparent;
+            text-align: center;
+            width: 80%;
+            max-width: 450px;
+            margin: 15px 0;
+            outline: none;
+        }
+
+        .cert-seal {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 25px auto 10px auto;
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+            border: 4px solid #FEF3C7;
+        }
+
+        .btn-print {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+            margin-top: 20px;
+        }
+
+        .btn-print:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 45px;
+            color: #64748B;
+            font-weight: 600;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .top-nav, .scorecard-header, .stats-grid, .badges-card, .btn-print, footer { display: none; }
+            .certificate-card { border-width: 10px; margin: 0; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="index.html" class="btn-nav">🏠 Main Hub</a>
+        <div style="font-family:'Fredoka',sans-serif; font-size:1.4rem; font-weight:700; color:var(--primary);">🏆 Official Student Scorecard</div>
+        <button class="btn-nav" onclick="window.print()">🖨️ Print Certificate</button>
+    </div>
+
+    <div class="scorecard-header">
+        <div>
+            <h1>Grammar Superhero Dashboard</h1>
+            <p style="font-weight:600; font-size:1.15rem; opacity:0.95;">Check your stars, unlocked badges, and print your official Certificate of Achievement!</p>
+        </div>
+        <div style="font-size:4rem;">🏆</div>
+    </div>
+
+    <div class="container">
+        <!-- Live Stats Overview -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-value" id="totalStars">3 / 3</div>
+                <div class="stat-label">Stars Earned</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-value" id="totalPoints">33 / 33</div>
+                <div class="stat-label">Total Points</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-value" id="accuracy">100%</div>
+                <div class="stat-label">Accuracy Score</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🎖️</div>
+                <div class="stat-value" id="badgeCount">6 / 6</div>
+                <div class="stat-label">Badges Unlocked</div>
+            </div>
+        </div>
+
+        <!-- Badges Collection -->
+        <div class="badges-card">
+            <h2>🏅 Unlocked Badges & Achievements</h2>
+            <div class="badges-grid">
+                <div class="badge-item unlocked">
+                    <div class="badge-img">📦</div>
+                    <div class="badge-name">Common Noun Master</div>
+                    <div class="badge-status">✅ Unlocked</div>
+                </div>
+
+                <div class="badge-item unlocked">
+                    <div class="badge-img">👑</div>
+                    <div class="badge-name">Proper Noun Hero</div>
+                    <div class="badge-status">✅ Unlocked</div>
+                </div>
+
+                <div class="badge-item unlocked">
+                    <div class="badge-img">🦁</div>
+                    <div class="badge-name">Animal Explorer</div>
+                    <div class="badge-status">✅ Unlocked</div>
+                </div>
+
+                <div class="badge-item unlocked">
+                    <div class="badge-img">🗽</div>
+                    <div class="badge-name">World Traveler</div>
+                    <div class="badge-status">✅ Unlocked</div>
+                </div>
+
+                <div class="badge-item unlocked">
+                    <div class="badge-img">🧩</div>
+                    <div class="badge-name">Crossword Champion</div>
+                    <div class="badge-status">✅ Unlocked</div>
+                </div>
+
+                <div class="badge-item unlocked">
+                    <div class="badge-img">⚡</div>
+                    <div class="badge-name">Grammar Superhero</div>
+                    <div class="badge-status">✅ Unlocked</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Official Printable Certificate -->
+        <div class="certificate-card">
+            <div style="font-size:3.5rem; margin-bottom:10px;">🌟🎓🌟</div>
+            <div class="cert-title">CERTIFICATE OF ACHIEVEMENT</div>
+            <div class="cert-subtitle">This official certificate is proudly presented to:</div>
+            
+            <input type="text" class="student-name-input" value="Alex Champion" placeholder="Enter Student Name">
+            
+            <div style="font-size:1.25rem; font-weight:700; color:#92400E; margin:15px 0;">
+                For outstanding mastery in <strong>Common Nouns, Proper Nouns, Pronouns & Verbs</strong><br>
+                in the Glapod Interactive Grammar Playbook!
+            </div>
+
+            <div class="cert-seal">
+                OFFICIAL<br>SEAL
+            </div>
+
+            <div style="font-weight:700; color:#78350F; margin-top:10px;">
+                Awarded on: <span id="certDate"></span> • Grade: <strong>A+ Superior</strong>
+            </div>
+
+            <button class="btn-print" onclick="window.print()">🖨️ Download / Print Certificate</button>
+        </div>
+    </div>
+
+    <footer>🎉 Glapod Interactive Playbook Series • Official Student Dashboard</footer>
+
+    <script>
+        document.getElementById('certDate').textContent = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    </script>
+</body>
+</html>

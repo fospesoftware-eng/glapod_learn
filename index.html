@@ -3,45 +3,353 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glapod Interactive Grammar Playbook — Hub</title>
+    <title>Glapod Interactive Grammar Playbook — Hub & Scorecard</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --accent-yellow: #F59E0B;
+            --accent-green: #10B981;
+            --accent-purple: #8B5CF6;
             --bg: linear-gradient(135deg, #E0F2FE 0%, #F0FDFA 50%, #FAF5FF 100%);
             --card-bg: rgba(255, 255, 255, 0.95);
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
-        body { font-family: 'Quicksand', sans-serif; background: var(--bg); color: #1E293B; padding: 25px 15px; min-height: 100vh; }
-        .hero { max-width: 1100px; margin: 0 auto 35px auto; background: linear-gradient(135deg, #4F46E5, #7C3AED); color: white; padding: 40px; border-radius: 30px; box-shadow: 0 20px 40px rgba(79,70,229,0.3); display: flex; align-items: center; justify-content: space-between; overflow: hidden; position: relative; }
-        .hero-text { max-width: 650px; z-index: 2; }
-        .hero-text h1 { font-family: 'Fredoka', sans-serif; font-size: 2.7rem; margin-bottom: 12px; letter-spacing: 0.5px; }
-        .hero-text p { font-size: 1.2rem; font-weight: 600; opacity: 0.95; }
-        .mascot-img { width: 190px; border-radius: 22px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); border: 4px solid rgba(255,255,255,0.4); transform: rotate(4deg); }
-        .container { max-width: 1100px; margin: 0 auto; }
-        .section-title { font-family: 'Fredoka', sans-serif; font-size: 1.8rem; color: #1E1B4B; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .grid-pages { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
-        .page-card { background: var(--card-bg); border-radius: 24px; padding: 25px; border: 2px solid rgba(255,255,255,0.9); box-shadow: 0 12px 25px rgba(0,0,0,0.06); text-decoration: none; color: inherit; transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); display: flex; flex-direction: column; justify-content: space-between; }
-        .page-card:hover { transform: translateY(-8px) scale(1.03); border-color: var(--primary); box-shadow: 0 18px 35px rgba(79,70,229,0.2); }
-        .badge-num { font-family: 'Fredoka', sans-serif; background: #EEF2FF; color: var(--primary); padding: 4px 14px; border-radius: 30px; font-weight: 700; font-size: 0.95rem; width: fit-content; margin-bottom: 12px; border: 2px solid #C7D2FE; }
-        .card-title { font-family: 'Fredoka', sans-serif; font-size: 1.4rem; color: #1E293B; margin-bottom: 8px; }
-        .card-desc { color: #64748B; font-size: 1.05rem; font-weight: 600; line-height: 1.5; margin-bottom: 15px; }
-        .btn-launch { font-family: 'Fredoka', sans-serif; background: linear-gradient(135deg, #10B981, #059669); color: white; padding: 10px 20px; border-radius: 40px; text-align: center; font-weight: 600; font-size: 1.05rem; box-shadow: 0 4px 12px rgba(16,185,129,0.3); }
-        footer { text-align: center; margin-top: 50px; color: #64748B; font-weight: 600; font-size: 1.05rem; }
-        @media(max-width:768px) { .hero { flex-direction: column; text-align: center; gap: 20px; } }
+        body { font-family: 'Quicksand', sans-serif; background: var(--bg); color: #1E293B; padding: 20px 15px 100px 15px; min-height: 100vh; }
+
+        /* Top App Bar with Score & Mascot Selector */
+        .app-bar {
+            max-width: 1100px;
+            margin: 0 auto 25px auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            position: sticky;
+            top: 15px;
+            z-index: 100;
+        }
+
+        .brand-logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #1E1B4B;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .score-badge-btn {
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: white;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 10px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+            transition: transform 0.2s;
+        }
+
+        .score-badge-btn:hover {
+            transform: scale(1.06);
+        }
+
+        .btn-icon {
+            background: white;
+            border: 2px solid #E2E8F0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: all 0.2s;
+        }
+
+        .btn-icon:hover {
+            transform: scale(1.1);
+            border-color: var(--primary);
+        }
+
+        /* Hero Banner */
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto 35px auto;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+            color: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(79,70,229,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-text {
+            max-width: 650px;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.7rem;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .mascot-container {
+            text-align: center;
+        }
+
+        .mascot-img {
+            width: 180px;
+            border-radius: 22px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 4px solid rgba(255,255,255,0.4);
+            transform: rotate(3deg);
+            transition: transform 0.3s;
+        }
+
+        .mascot-img:hover {
+            transform: rotate(0deg) scale(1.06);
+        }
+
+        .avatar-picker-bar {
+            margin-top: 10px;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .avatar-opt {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .avatar-opt:hover {
+            transform: scale(1.2);
+            background: white;
+        }
+
+        /* Container & Cards */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+        }
+
+        .section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.85rem;
+            color: #1E1B4B;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grid-pages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+        }
+
+        .page-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 25px;
+            border: 2px solid rgba(255,255,255,0.9);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.06);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .page-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            border-color: var(--primary);
+            box-shadow: 0 18px 35px rgba(79,70,229,0.2);
+        }
+
+        .badge-num {
+            font-family: 'Fredoka', sans-serif;
+            background: #EEF2FF;
+            color: var(--primary);
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            width: fit-content;
+            margin-bottom: 12px;
+            border: 2px solid #C7D2FE;
+        }
+
+        .card-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.4rem;
+            color: #1E293B;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            color: #64748B;
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .btn-launch {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 12px rgba(16,185,129,0.3);
+        }
+
+        /* Floating Quick Playbook Navigation Dock */
+        .floating-dock {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 10px 22px;
+            border-radius: 50px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border: 2px solid rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 500;
+        }
+
+        .dock-item {
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #EEF2FF;
+            color: var(--primary);
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.2s;
+            border: 2px solid #C7D2FE;
+        }
+
+        .dock-item:hover {
+            transform: scale(1.2);
+            background: var(--primary);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #64748B;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        @media(max-width:768px) {
+            .hero { flex-direction: column; text-align: center; gap: 20px; }
+            .floating-dock { max-width: 90%; overflow-x: auto; justify-content: flex-start; }
+        }
     </style>
 </head>
 <body>
+    <!-- App Navigation Bar -->
+    <div class="app-bar">
+        <div class="brand-logo">
+            <span>📚</span>
+            <span>Glapod Playbook World</span>
+        </div>
+        <div class="bar-actions">
+            <a href="scorecard.html" class="score-badge-btn">
+                <span>🏆 Scorecard & Certificate</span>
+                <span>(33 pts)</span>
+            </a>
+            <button class="btn-icon" id="soundBtn" title="Toggle Sound FX">🔊</button>
+        </div>
+    </div>
+
+    <!-- Hero Header Banner -->
     <div class="hero">
         <div class="hero-text">
-            <h1>📚 Glapod Interactive Learning Playbook</h1>
-            <p>Welcome! Explore 11 full interactive pages converted directly from your Grammar PDF with AI artwork, audio read-aloud, and play-and-learn games!</p>
+            <h1>Welcome to Glapod Playbook!</h1>
+            <p>Explore 11 complete interactive pages converted directly from your Grammar PDF. Earn stars, unlock badges, and print your official Certificate of Achievement!</p>
         </div>
-        <img src="file:///Users/asterantony/.gemini/antigravity/brain/a6de559f-5ff1-4ea7-a7b0-809bbefa6701/learning_mascot_1785943847694.jpg" alt="Owl Mascot" class="mascot-img">
+        <div class="mascot-container">
+            <img src="learning_mascot_1785943847694.jpg" alt="Owl Mascot" class="mascot-img" id="mascotImg">
+            <div class="avatar-picker-bar">
+                <span class="avatar-opt" title="Professor Hoot 🦉" onclick="setMascot('learning_mascot_1785943847694.jpg')">🦉</span>
+                <span class="avatar-opt" title="Leo Lion 🦁" onclick="setMascot('lion_cub_art_1785944061140.jpg')">🦁</span>
+                <span class="avatar-opt" title="Paris Traveler 🗼" onclick="setMascot('paris_eiffel_art_1785944088631.jpg')">🗼</span>
+            </div>
+        </div>
     </div>
 
     <div class="container">
-        <div class="section-title">✨ Select an Interactive Playbook Page:</div>
+        <div class="section-header">
+            <div class="section-title">✨ Select an Interactive Playbook Page:</div>
+            <a href="scorecard.html" style="font-weight:700; color:var(--primary); text-decoration:none;">View My Badges & Progress ➔</a>
+        </div>
 
         <div class="grid-pages">
             <!-- Page 1 -->
@@ -104,48 +412,81 @@
                 <div class="btn-launch">Play Page 6 ➔</div>
             </a>
 
-            <!-- Page 7 (Original Showcase Page) -->
+            <!-- Page 7 (Special Feature Page) -->
             <a href="page7_interactive/index.html" class="page-card" style="border:3px solid #8B5CF6;">
                 <div>
                     <div class="badge-num" style="background:#F3E8FF; color:#8B5CF6; border-color:#DDD6FE;">PAGE 7 ⭐ SPECIAL</div>
                     <div class="card-title">⭐ Page 7: Nouns Masterclass</div>
-                    <div class="card-desc">Exercises 1, 2, 3 with drag & drop sorting, sentence highlighter & story puzzle!</div>
+                    <div class="card-desc">Exercises 1, 2, 3 with drag & drop sorting, sentence classifier & story puzzle!</div>
                 </div>
                 <div class="btn-launch" style="background:linear-gradient(135deg, #8B5CF6, #7C3AED);">Play Page 7 ➔</div>
             </a>
 
             <!-- Page 8 -->
-            <a href="pages/page8_reflexive_pronouns.html" class="page-card">
+            <a href="pages/page7_crossword.html" class="page-card">
                 <div>
                     <div class="badge-num">PAGE 8</div>
-                    <div class="card-title">🪞 Reflexive Pronouns Studio</div>
-                    <div class="card-desc">Myself, yourself, himself, herself, itself, ourselves, themselves.</div>
+                    <div class="card-title">🧩 Noun Gender Crossword</div>
+                    <div class="card-desc">Exercise 10: Interactive HTML5 grid crossword puzzle!</div>
                 </div>
                 <div class="btn-launch">Play Page 8 ➔</div>
             </a>
 
             <!-- Page 9 -->
-            <a href="pages/page9_adjectives.html" class="page-card">
+            <a href="pages/page8_reflexive_pronouns.html" class="page-card">
                 <div>
                     <div class="badge-num">PAGE 9</div>
-                    <div class="card-title">🎨 Kinds of Adjectives & Comparison</div>
-                    <div class="card-desc">Size, Color, Quality, Substance & Comparative (-er) vs Superlative (-est).</div>
+                    <div class="card-title">🪞 Reflexive Pronouns Studio</div>
+                    <div class="card-desc">Myself, yourself, himself, herself, itself, ourselves, themselves.</div>
                 </div>
                 <div class="btn-launch">Play Page 9 ➔</div>
             </a>
 
             <!-- Page 10 -->
-            <a href="pages/page10_verbs_tenses.html" class="page-card">
+            <a href="pages/page9_adjectives.html" class="page-card">
                 <div>
                     <div class="badge-num">PAGE 10</div>
+                    <div class="card-title">🎨 Kinds of Adjectives & Comparison</div>
+                    <div class="card-desc">Size, Color, Quality, Substance & Comparative (-er) vs Superlative (-est).</div>
+                </div>
+                <div class="btn-launch">Play Page 10 ➔</div>
+            </a>
+
+            <!-- Page 11 -->
+            <a href="pages/page10_verbs_tenses.html" class="page-card">
+                <div>
+                    <div class="badge-num">PAGE 11</div>
                     <div class="card-title">🏃 Action Verbs & Agreement</div>
                     <div class="card-desc">Action verbs sound playground & subject-verb agreement rules.</div>
                 </div>
-                <div class="btn-launch">Play Page 10 ➔</div>
+                <div class="btn-launch">Play Page 11 ➔</div>
             </a>
         </div>
     </div>
 
-    <footer>🎉 Fospe Innovations Hub — Glapod Learning Playbook Collection</footer>
+    <!-- Quick Navigation Dock -->
+    <div class="floating-dock">
+        <a href="index.html" class="dock-item" title="Home Hub">🏠</a>
+        <a href="pages/page1_common_nouns.html" class="dock-item">1</a>
+        <a href="pages/page2_proper_nouns.html" class="dock-item">2</a>
+        <a href="pages/page3_famous_places.html" class="dock-item">3</a>
+        <a href="pages/page4_singular_plural.html" class="dock-item">4</a>
+        <a href="pages/page5_plural_rules.html" class="dock-item">5</a>
+        <a href="pages/page6_masculine_feminine.html" class="dock-item">6</a>
+        <a href="page7_interactive/index.html" class="dock-item" style="background:#8B5CF6; color:white;">7</a>
+        <a href="pages/page7_crossword.html" class="dock-item">8</a>
+        <a href="pages/page8_reflexive_pronouns.html" class="dock-item">9</a>
+        <a href="pages/page9_adjectives.html" class="dock-item">10</a>
+        <a href="pages/page10_verbs_tenses.html" class="dock-item">11</a>
+        <a href="scorecard.html" class="dock-item" style="background:#F59E0B; color:white;" title="Scorecard & Certificate">🏆</a>
+    </div>
+
+    <footer>🎉 Glapod Interactive Learning Playbook Collection</footer>
+
+    <script>
+        function setMascot(imgName) {
+            document.getElementById('mascotImg').src = imgName;
+        }
+    </script>
 </body>
 </html>
